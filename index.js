@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const images = [
     "images/wood_Community_Final_Render.jpg",
     "images/culture_Roof_Final_Render.jpg",
-    "images/sportpark_Marslanden_Final_Render.jpg",
+    "images/sportpark_Marslanden_Render.jpg",
   ];
 
   // Preload images for smoother transitions

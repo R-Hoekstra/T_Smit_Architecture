@@ -489,37 +489,35 @@ main {
     user-select: none;
   }
 
-  /* ----- PORTFOLIO CARD – strict containment ----- */
   .portfolio-card {
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 100%;
     max-width: 100%;
     margin: 0;
-    /* padding: 2rem 6vh; */
     padding: 1.5rem 1.25rem;
     box-sizing: border-box;
-    gap: 1.5rem;
+    gap: 1rem;                     /* ✅ tighter overall spacing */
 
     min-height: calc(100svh - var(--header-h, 0px) - var(--footer-h-px));
     max-height: calc(100svh - var(--header-h, 0px) - var(--footer-h-px));
-    overflow: hidden;
+    overflow-y: auto;              /* ✅ keep all text visible */
+    -webkit-overflow-scrolling: touch;
+
     display: flex;
-    flex-direction: column;
     scroll-snap-align: start;
   }
 
-  /* ----- INFO & GALLERY ----- */
   .portfolio-info,
   .portfolio-gallery {
     width: 100%;
-    flex: 1 1 auto;
+    flex: 0 0 auto;              /* ✅ size to content, not half-screen */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* ✅ no vertical centering */
     padding: 0;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .portfolio-info, .portfolio-gallery > * {
@@ -529,13 +527,28 @@ main {
   .portfolio-info {
     order: 1;
     text-align: center;
-    align-items: stretch;      /* <-- let children use full width */
+    align-items: stretch;
     width: 100%;
-    max-width: 480px;          /* <-- control how wide the column is */
-    margin: 0 auto;            /* <-- center it in the card */
-    font-size: 0.85rem;       /* smaller text */
-    line-height: 1.35;        /* tighter line height */
-    gap: 0.45rem;             /* less vertical space between lines */
+    max-width: 480px;
+    margin: 0 auto;
+
+    font-size: 0.88rem;
+    line-height: 1.4;
+    gap: 0.5rem;
+
+    flex: 0 0 auto;          /* ✅ don't steal height from text */
+    justify-content: flex-start;
+  }
+
+  .portfolio-gallery {
+    order: 2;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+
+    flex: 0 0 auto;
+    margin-top: 0.8rem;        /* ✅ pushes gallery toward bottom */
+    max-height: 30vh;        /* ✅ flatter overall block */
   }
 
   .portfolio-info h2 {
@@ -549,40 +562,31 @@ main {
     overflow-wrap: break-word;
   }
 
-  /* Optional: truncate long text */
-  .portfolio-info p {
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    /* overflow: hidden; */
-    text-overflow: ellipsis;
-  }
-
-  .portfolio-gallery {
-    order: 2;
-    height: auto;
-    max-height: 40vh;
-    width: 100%;
-    max-width: 480px;      /* same max width as text */
-    margin: 0 auto;        /* center on screen */
-  }
-
-  /* ----- IMAGES ----- */
   .portfolio-gallery img,
   .info-image {
     width: 100%;
     height: auto;
-    max-height: 35vh;
     object-fit: cover;
     border-radius: 10px;
     display: block;
     margin: 0 auto;
+
+    aspect-ratio: 16 / 9;    /* ✅ flatter look without changing width */
+  }
+
+  .portfolio-gallery img {
+    max-height: 24vh;        /* ✅ reduce tallness */
   }
 
   .info-image {
-    margin-top: 0.75rem;
-    max-height: 25vh;
+    margin-top: 1.25rem;   /* ✅ more space between text and top image */
+    max-height: 18vh;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
   }
+
 
   /* ----- ARROWS & INDICATORS ----- */
   .arrow { display: none; }
