@@ -256,7 +256,7 @@ main {
 .portfolio-indicators {
   position: absolute;
   left: 50%;
-  bottom: clamp(12px, 3vh, 24px);
+  bottom: clamp(12px, 2vh, 24px);
   transform: translateX(-50%);
   display: flex;
   align-items: flex-end;
@@ -490,22 +490,26 @@ main {
   }
 
   .portfolio-card {
+    display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;   /* center the whole content vertically */
+    
     width: 100%;
     max-width: 100%;
     margin: 0;
     padding: 1.5rem 1.25rem;
     box-sizing: border-box;
-    gap: 1rem;                     /* ✅ tighter overall spacing */
+    gap: 1rem;
 
+    /* The card should be at least the height of the screen,
+        but allowed to grow taller naturally */
     min-height: calc(100svh - var(--header-h, 0px) - var(--footer-h-px));
-    max-height: calc(100svh - var(--header-h, 0px) - var(--footer-h-px));
-    overflow-y: auto;              /* ✅ keep all text visible */
-    -webkit-overflow-scrolling: touch;
+    height: auto;
 
-    display: flex;
+    /* No internal scrolling */
+    overflow: visible;
+
     scroll-snap-align: start;
   }
 
@@ -660,10 +664,10 @@ main {
     max-height: 30vh !important;
   }
 
-  .portfolio-info p {
+  /* .portfolio-info p {
     font-size: 0.85rem;
     -webkit-line-clamp: 3;
-  }
+  } */
 
   .hero-background {
     height: auto !important;
