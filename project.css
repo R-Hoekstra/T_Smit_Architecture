@@ -664,11 +664,6 @@ main {
     max-height: 30vh !important;
   }
 
-  /* .portfolio-info p {
-    font-size: 0.85rem;
-    -webkit-line-clamp: 3;
-  } */
-
   .hero-background {
     height: auto !important;
     min-height: auto !important;

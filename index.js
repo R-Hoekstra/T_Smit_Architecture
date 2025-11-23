@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const nextSlide = slides[current];
     nextSlide.classList.add("active");
 
-    // After transition ends, reset exiting slide (must match CSS transition time)
+    // After transition ends, reset exiting slide
     setTimeout(() => {
       currentSlide.classList.remove("exit");
     }, 2000);

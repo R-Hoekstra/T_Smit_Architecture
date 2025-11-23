@@ -205,10 +205,6 @@ a, img, button {
   }
 }
 
-/* ============================================
-   VERY SMALL SCREENS → max-height: 550px
-   Ensures the card never gets cut off
-=============================================== */
 @media (max-height: 550px) {
 
     .content-wrapper {

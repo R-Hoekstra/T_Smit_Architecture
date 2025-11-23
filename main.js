@@ -201,23 +201,6 @@
       });
     });
 
-    // ---- Active link on load (hash → section; else → path) ----
-    // (function initActiveLink() {
-    //   const currentUrl = window.location.href;
-    //   const hasHash = currentUrl.includes("#");
-    //   if (hasHash) {
-    //     const hash = `#${currentUrl.split("#")[1]}`;
-    //     highlightActiveLink(hash);
-    //     return;
-    //   }
-    //   const currentPath =
-    //     window.location.pathname.split("/").pop() || "index.html";
-    //   navLinks.forEach((link) => {
-    //     const href = link.getAttribute("href");
-    //     link.classList.toggle("active", href === currentPath);
-    //   });
-    // })();
-
     // ---- Header show/hide on scroll (closes menu when scrolling down) ----
     let lastScrollY = window.scrollY;
     window.addEventListener("scroll", () => {

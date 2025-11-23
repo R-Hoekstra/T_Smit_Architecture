@@ -281,10 +281,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (e.key === "ArrowRight") goTo(index + 1);
     });
 
-    // drag + snap swipe with smoothing (DuckDuckGo-friendly)
-    // dynamic threshold:
-    //  - quick swipe: 10% width
-    //  - slow drag:  50% width (whichever card is more visible)
     let touchStartX = 0;
     let touchStartY = 0;
     let lastTouchX = 0;
@@ -298,9 +294,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let scrollLocked = false; // 🔒 blocks vertical scroll once we’re swiping horizontally
 
-    const directionLockThreshold = 12; // px before we decide direction
-    const maxStepRatio = 0.18; // max ~18% of card width per move event
-    const QUICK_SWIPE_TIME = 180; // ms: shorter than this = "quick swipe"
+    const directionLockThreshold = 12;
+    const maxStepRatio = 0.18;
+    const QUICK_SWIPE_TIME = 180;
 
     // --- NEW: global scroll locker so the page can't move while swiping ---
     let globalTouchMoveBlocker = null;
@@ -515,10 +511,6 @@ document.addEventListener("DOMContentLoaded", () => {
   })();
 });
 
-/* ================================
-   KEEP THIS (unhide cards on load)
-   main.js sets body.loaded; we only remove the helper class here.
-================================ */
 window.addEventListener("load", () => {
   document.querySelectorAll(".hidden-until-load").forEach((el) => {
     el.classList.remove("hidden-until-load");
