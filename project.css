@@ -439,7 +439,7 @@ main {
 
   /* ----- HERO SECTION (kept from your original) ----- */
   .hero-background {
-    min-height: 100svh;
+    min-height: 100lvh;
     padding: calc(var(--header-h, 0px) + 16px) 16px calc(var(--footer-h-px) + 40px);
     box-sizing: border-box;
     display: flex;
@@ -467,7 +467,7 @@ main {
 
   /* ----- PORTFOLIO WRAPPER ----- */
   .portfolio-wrapper {
-    min-height: 100svh;
+    min-height: 100lvh;
     padding: 0;
     box-sizing: border-box;
     display: flex;
@@ -504,7 +504,7 @@ main {
 
     /* The card should be at least the height of the screen,
         but allowed to grow taller naturally */
-    min-height: calc(100svh - var(--header-h, 0px) - var(--footer-h-px));
+    min-height: calc(100lvh - var(--header-h, 0px) - var(--footer-h-px));
     height: auto;
 
     /* No internal scrolling */
@@ -552,7 +552,7 @@ main {
 
     flex: 0 0 auto;
     margin-top: 0.8rem;        /* ✅ pushes gallery toward bottom */
-    max-height: 30vh;        /* ✅ flatter overall block */
+    max-height: 30lvh;        /* ✅ flatter overall block */
   }
 
   .portfolio-info h2 {
@@ -579,12 +579,12 @@ main {
   }
 
   .portfolio-gallery img {
-    max-height: 24vh;        /* ✅ reduce tallness */
+    max-height: 24lvh;        /* ✅ reduce tallness */
   }
 
   .info-image {
     margin-top: 1.25rem;   /* ✅ more space between text and top image */
-    max-height: 18vh;
+    max-height: 18lvh;
     aspect-ratio: 16 / 9;
     width: 100%;
     object-fit: cover;
@@ -611,12 +611,12 @@ main {
   #name-container a .name::after { display: none; content: none; }
   .lightbox-img-wrapper{
     max-width: 96vw;
-    max-height: 70vh; /* leaves room for arrows below */
+    max-height: 70lvh; /* leaves room for arrows below */
   }
 
   .lightbox-content{
     max-width: 96vw;
-    max-height: 70vh;
+    max-height: 70lvh;
     width: 100%;
   }
 
@@ -661,7 +661,7 @@ main {
 
   .portfolio-gallery img,
   .info-image {
-    max-height: 30vh !important;
+    max-height: 30lvh !important;
   }
 
   .hero-background {
