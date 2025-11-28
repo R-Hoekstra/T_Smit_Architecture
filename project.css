@@ -184,6 +184,22 @@ main {
   padding-right: clamp(2rem, 5vw, 6rem);
   box-sizing: border-box;
   gap: 2rem;
+
+  position: relative;
+
+  /* rounded corners + border */
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  /* translucent dark background */
+  background: rgba(4, 10, 16, 0.82);
+
+  /* soft shadow so it floats off the page */
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65);
+
+  /* add some vertical padding (keeps your left/right padding from before) */
+  padding-top: clamp(1.5rem, 3vh, 2.5rem);
+  padding-bottom: clamp(1.5rem, 3vh, 2.5rem);
 }
 
 /* Info + gallery split evenly */
@@ -431,6 +447,14 @@ main {
 
 
 
+/* If blur is supported, make it extra glassy */
+@supports (backdrop-filter: blur(6px)) {
+  .portfolio-card {
+    background: rgba(4, 10, 16, 0.65);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+}
 
 /* ==============================================================
    MOBILE ONLY – CONTAIN CONTENT INSIDE .portfolio-card
@@ -511,6 +535,11 @@ main {
     overflow: visible;
 
     scroll-snap-align: start;
+
+    background: transparent;    /* same as page background */
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
   }
 
   .portfolio-info,
@@ -542,6 +571,11 @@ main {
 
     flex: 0 0 auto;          /* ✅ don't steal height from text */
     justify-content: flex-start;
+
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
   }
 
   .portfolio-gallery {
@@ -576,6 +610,7 @@ main {
     margin: 0 auto;
 
     aspect-ratio: 16 / 9;    /* ✅ flatter look without changing width */
+    border-radius: 12px;
   }
 
   .portfolio-gallery img {
@@ -645,6 +680,67 @@ main {
 
   .lightbox .prev:focus,
   .lightbox .next:focus{ color: #fff; outline: none; }
+
+  /* flipped cards still show text above image, which is nice on mobile */
+  .portfolio-card.layout-flip .portfolio-info {
+    text-align: center;
+    align-items: stretch;
+  }
+
+  /* images-only: both images just stack nicely */
+  .portfolio-card.layout-images-only .portfolio-gallery {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
+
+/* =========================================
+   PORTFOLIO CARD LAYOUT VARIANTS (DESKTOP)
+   ========================================= */
+@media (min-width: 901px) {
+
+  /* A) FLIPPED LAYOUT
+     - Big image on the LEFT
+     - Text + small image on the RIGHT
+  */
+  .portfolio-card.layout-flip {
+    flex-direction: row-reverse;     /* swap columns */
+  }
+
+  .portfolio-card.layout-flip .portfolio-info {
+    align-items: flex-start;         /* text aligned to left now */
+    text-align: left;
+  }
+
+  /* B) IMAGES-ONLY LAYOUT
+     - Both sides are images
+     - Optional captions inside if you want
+  */
+  .portfolio-card.layout-images-only {
+    /* same flex-row as default, but tuned for two images */
+    align-items: stretch;
+  }
+
+  .portfolio-card.layout-images-only .portfolio-gallery {
+    max-width: 50%;
+    padding: 1rem;
+    justify-content: center;
+  }
+
+  .portfolio-card.layout-images-only .portfolio-gallery img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  /* If you want the left image a bit more dominant */
+  .portfolio-card.layout-images-only .gallery-main {
+    flex: 1.1;
+  }
+
+  .portfolio-card.layout-images-only .gallery-secondary {
+    flex: 0.9;
+  }
 }
 
 /* ==============================================================
